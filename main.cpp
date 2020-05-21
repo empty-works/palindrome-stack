@@ -15,9 +15,18 @@ bool IsPalindrome(const std::string &palin) {
 			pal_stack.push(std::toupper(pal_char));
 			pal_queue.push(std::toupper(pal_char));
 		}
-		//if(pal_stack.pop() == 
+		if(!pal_stack.empty() && !pal_queue.empty()) {
+			if(pal_stack.top() != pal_queue.front()) {
+				is_palindrome = false;
+				break;
+			}
+			else {
+				pal_stack.pop();
+				pal_queue.pop();
+			}
+		}
 	}
-	
+	return is_palindrome;	
 }
 
 int main() {
